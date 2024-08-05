@@ -59,6 +59,12 @@ pub struct Bot {
     client: Client,
 }
 
+// This is safe to do because the struct is
+// immutable and it is possible pass safelly it accross
+// awaiting points.
+unsafe impl Send for Bot {}
+unsafe impl Sync for Bot {}
+
 /// Constructors
 impl Bot {
     /// Creates a new `Bot` with the specified token and the default
